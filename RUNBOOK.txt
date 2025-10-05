@@ -1,0 +1,9 @@
+Cursor should now:
+1. Create a Python venv (.venv)
+2. Install backend requirements
+3. Run: python backend/scripts/train_model.py
+4. Run backend dev server: uvicorn backend.app.main:app --reload --port 8000
+5. In a separate shell, cd frontend && npm ci && npm run dev
+6. Run tests: .venv/bin/activate && pytest -q backend/tests
+7. Build artifacts: cd frontend && npm run build
+8. Docker: docker-compose up --build -d
