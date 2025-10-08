@@ -7,9 +7,10 @@ import {
   AnalysisRequest, 
   AnalysisResponse, 
   HealthResponse, 
-  ModelInfo,
-  LoadingState,
-  ApiError 
+  ModelInfoResponse,
+  SystemStatus,
+  DashboardStats,
+  BatchAnalysisRequest
 } from '../types';
 import { apiService } from '../services/api';
 

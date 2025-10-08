@@ -6,8 +6,10 @@ import {
   AnalysisRequest, 
   AnalysisResponse, 
   HealthResponse, 
-  ModelInfo,
-  ApiError 
+  ModelInfoResponse,
+  SystemStatus,
+  DashboardStats,
+  BatchAnalysisRequest
 } from '../types';
 
 class ApiService {
@@ -44,8 +46,8 @@ class ApiService {
       },
       (error) => {
         console.error('API Response Error:', error);
-        const apiError: ApiError = {
-          message: error.response?.data?.message || error.message || 'Unknown error',
+        const apiError = {
+          message: error.response?.data?.error || error.message || 'Unknown error',
           code: error.response?.status?.toString() || 'NETWORK_ERROR',
           details: error.response?.data,
           timestamp: new Date(),
@@ -67,12 +69,34 @@ class ApiService {
   }
 
   // Model Information
-  async getModelInfo(): Promise<ModelInfo> {
+  async getModelInfo(): Promise<ModelInfoResponse> {
     try {
-      const response = await this.api.get<ModelInfo>('/model/info');
+      const response = await this.api.get<ModelInfoResponse>('/model/info');
       return response.data;
     } catch (error) {
       console.error('Failed to get model info:', error);
+      throw error;
+    }
+  }
+
+  // System Status
+  async getSystemStatus(): Promise<SystemStatus> {
+    try {
+      const response = await this.api.get<SystemStatus>('/status');
+      return response.data;
+    } catch (error) {
+      console.error('Failed to get system status:', error);
+      throw error;
+    }
+  }
+
+  // Dashboard Statistics
+  async getDashboardStats(): Promise<DashboardStats> {
+    try {
+      const response = await this.api.get<DashboardStats>('/stats');
+      return response.data;
+    } catch (error) {
+      console.error('Failed to get dashboard stats:', error);
       throw error;
     }
   }
@@ -89,16 +113,10 @@ class ApiService {
   }
 
   // Batch Analysis
-  async analyzeBatch(requests: AnalysisRequest[]): Promise<AnalysisResponse[]> {
+  async analyzeBatch(requests: BatchAnalysisRequest): Promise<AnalysisResponse[]> {
     try {
-      const promises = requests.map(request => this.analyzeContent(request));
-      const responses = await Promise.allSettled(promises);
-      
-      return responses
-        .filter((result): result is PromiseFulfilledResult<AnalysisResponse> => 
-          result.status === 'fulfilled'
-        )
-        .map(result => result.value);
+      const response = await this.api.post<AnalysisResponse[]>('/analyze/batch', requests);
+      return response.data;
     } catch (error) {
       console.error('Batch analysis failed:', error);
       throw error;
