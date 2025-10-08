@@ -1,0 +1,82 @@
+[
+  {
+    "subject": "URGENT: Security Alert - Account Compromise Detected",
+    "body": "Dear Customer,\n\nWe have detected suspicious activity on your Apple account.\n\nClick here to verify: http://apple-security-verify.net\n\nBest regards,\nApple Security Team",
+    "sender": "noreply@apple.com",
+    "label": "phish",
+    "confidence": 0.9171883743801897,
+    "template_type": "security_alert",
+    "company": "Apple",
+    "timestamp": "2025-10-08T17:44:22.456772"
+  },
+  {
+    "subject": "Account Verification Required - Action Needed",
+    "body": "Dear Customer,\n\nWe have detected suspicious activity on your Microsoft account.\n\nClick here to verify: http://microsoft-security-verify.net\n\nBest regards,\nMicrosoft Security Team",
+    "sender": "noreply@microsoft.com",
+    "label": "phish",
+    "confidence": 0.8584107076517833,
+    "template_type": "security_alert",
+    "company": "Microsoft",
+    "timestamp": "2025-10-08T17:44:22.456778"
+  },
+  {
+    "subject": "URGENT: Security Alert - Account Compromise Detected",
+    "body": "Dear Customer,\n\nWe have detected suspicious activity on your Amazon account.\n\nClick here to verify: http://amazon-security-verify.net\n\nBest regards,\nAmazon Security Team",
+    "sender": "noreply@amazon.com",
+    "label": "phish",
+    "confidence": 0.8339716624974904,
+    "template_type": "security_alert",
+    "company": "Amazon",
+    "timestamp": "2025-10-08T17:44:22.456783"
+  },
+  {
+    "subject": "Order Confirmation - #12345",
+    "body": "Hello,\n\nThank you for using Amazon services.\n\nThis is a legitimate communication from Amazon.\n\nBest regards,\nAmazon Team",
+    "sender": "noreply@amazon.com",
+    "label": "benign",
+    "confidence": 0.9638274866991107,
+    "template_type": "newsletter",
+    "company": "Amazon",
+    "timestamp": "2025-10-08T17:44:22.456803"
+  },
+  {
+    "subject": "Order Confirmation - #12345",
+    "body": "Hello,\n\nThank you for using Google services.\n\nThis is a legitimate communication from Google.\n\nBest regards,\nGoogle Team",
+    "sender": "noreply@google.com",
+    "label": "benign",
+    "confidence": 0.9031385632597332,
+    "template_type": "newsletter",
+    "company": "Google",
+    "timestamp": "2025-10-08T17:44:22.456807"
+  },
+  {
+    "subject": "Weekly Newsletter - Latest Updates",
+    "body": "Hello,\n\nThank you for using Microsoft services.\n\nThis is a legitimate communication from Microsoft.\n\nBest regards,\nMicrosoft Team",
+    "sender": "noreply@microsoft.com",
+    "label": "benign",
+    "confidence": 0.9955090611615403,
+    "template_type": "newsletter",
+    "company": "Microsoft",
+    "timestamp": "2025-10-08T17:44:22.456823"
+  },
+  {
+    "subject": "Meeting Invitation - Project Review",
+    "body": "Hello,\n\nThank you for using Google services.\n\nThis is a legitimate communication from Google.\n\nBest regards,\nGoogle Team",
+    "sender": "noreply@google.com",
+    "label": "benign",
+    "confidence": 0.975069355254951,
+    "template_type": "newsletter",
+    "company": "Google",
+    "timestamp": "2025-10-08T17:44:22.456827"
+  },
+  {
+    "subject": "Order Confirmation - #12345",
+    "body": "Hello,\n\nThank you for using Google services.\n\nThis is a legitimate communication from Google.\n\nBest regards,\nGoogle Team",
+    "sender": "noreply@google.com",
+    "label": "benign",
+    "confidence": 0.9314791712416094,
+    "template_type": "newsletter",
+    "company": "Google",
+    "timestamp": "2025-10-08T17:44:22.456830"
+  }
+]

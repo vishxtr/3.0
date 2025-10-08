@@ -1,0 +1,20 @@
+{
+  "demo_timestamp": "2025-10-08T17:44:22.458104",
+  "datasets_generated": {
+    "urls": 10,
+    "emails": 8,
+    "adversarial_urls": 5
+  },
+  "url_labels": {
+    "phish": 3,
+    "benign": 7
+  },
+  "email_labels": {
+    "phish": 3,
+    "benign": 5
+  },
+  "techniques_used": [
+    "homograph",
+    "subdomain_spoofing"
+  ]
+}

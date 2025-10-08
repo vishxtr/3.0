@@ -1,0 +1,72 @@
+[
+  {
+    "url": "https://paypal-security-alert.net/login",
+    "label": "phish",
+    "confidence": 0.861046059772852,
+    "technique": "homograph",
+    "timestamp": "2025-10-08T17:44:22.456565"
+  },
+  {
+    "url": "https://paypal-security-alert.net/login",
+    "label": "phish",
+    "confidence": 0.7827968561580133,
+    "technique": "homograph",
+    "timestamp": "2025-10-08T17:44:22.456628"
+  },
+  {
+    "url": "https://paypal-security-alert.net/login",
+    "label": "phish",
+    "confidence": 0.9021505394492075,
+    "technique": "subdomain_spoofing",
+    "timestamp": "2025-10-08T17:44:22.456633"
+  },
+  {
+    "url": "https://amazon.com/login",
+    "label": "benign",
+    "confidence": 0.8038884466666791,
+    "technique": "legitimate",
+    "timestamp": "2025-10-08T17:44:22.456637"
+  },
+  {
+    "url": "https://microsoft.com/login",
+    "label": "benign",
+    "confidence": 0.906939169297772,
+    "technique": "legitimate",
+    "timestamp": "2025-10-08T17:44:22.456640"
+  },
+  {
+    "url": "https://amazon.com/login",
+    "label": "benign",
+    "confidence": 0.8797270157484789,
+    "technique": "legitimate",
+    "timestamp": "2025-10-08T17:44:22.456643"
+  },
+  {
+    "url": "https://apple.com/login",
+    "label": "benign",
+    "confidence": 0.9538829888168824,
+    "technique": "legitimate",
+    "timestamp": "2025-10-08T17:44:22.456653"
+  },
+  {
+    "url": "https://microsoft.com/login",
+    "label": "benign",
+    "confidence": 0.963244205676631,
+    "technique": "legitimate",
+    "timestamp": "2025-10-08T17:44:22.456656"
+  },
+  {
+    "url": "https://microsoft.com/login",
+    "label": "benign",
+    "confidence": 0.8205894537219032,
+    "technique": "legitimate",
+    "timestamp": "2025-10-08T17:44:22.456659"
+  },
+  {
+    "url": "https://apple.com/login",
+    "label": "benign",
+    "confidence": 0.8500800119841927,
+    "technique": "legitimate",
+    "timestamp": "2025-10-08T17:44:22.456662"
+  }
+]

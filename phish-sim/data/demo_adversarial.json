@@ -1,0 +1,37 @@
+[
+  {
+    "url": "https://g\u043e\u043egle.com/login",
+    "technique": "unicode_normalization",
+    "obfuscation_score": 0.5037800178201203,
+    "unicode_ratio": 0.1,
+    "timestamp": "2025-10-08T17:44:22.456902"
+  },
+  {
+    "url": "https://g00gle.com/login",
+    "technique": "character_substitution",
+    "obfuscation_score": 0.747993966594145,
+    "unicode_ratio": 0.0,
+    "timestamp": "2025-10-08T17:44:22.456906"
+  },
+  {
+    "url": "https://google.com/%6C%6F%67%69%6E",
+    "technique": "url_encoding",
+    "obfuscation_score": 0.3991980736383179,
+    "unicode_ratio": 0.0,
+    "timestamp": "2025-10-08T17:44:22.456908"
+  },
+  {
+    "url": "https://google.com/redirect?data=aHR0cHM6Ly9nb29nbGUuY29tL2xvZ2lu",
+    "technique": "base64_encoding",
+    "obfuscation_score": 0.8059300292723122,
+    "unicode_ratio": 0.0,
+    "timestamp": "2025-10-08T17:44:22.456923"
+  },
+  {
+    "url": "https://google-security.legitimate-site.com/login",
+    "technique": "subdomain_spoofing",
+    "obfuscation_score": 0.6961258406551071,
+    "unicode_ratio": 0.0,
+    "timestamp": "2025-10-08T17:44:22.456925"
+  }
+]
