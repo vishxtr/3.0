@@ -18,13 +18,14 @@ import sys
 from pathlib import Path
 sys.path.append(str(Path(__file__).parent.parent))
 
-from api.realtime_api import app, InferenceRequest, InferenceResponse
+# Import the actual components we created
+from api.realtime_api import app, AnalysisRequest, AnalysisResponse
 from redis.redis_manager import RedisManager
-from websocket.websocket_manager import WebSocketManager, ConnectionManager
-from queue.queue_manager import QueueManager, Priority, RequestStatus
-from monitoring.metrics import MetricsCollector
-from orchestration.pipeline_orchestrator import PipelineOrchestrator, ComponentStatus
-from config import get_config
+from websocket.websocket_manager import WebSocketManager
+from queue.queue_manager import QueueManager
+from monitoring.metrics import REQUEST_COUNT, REQUEST_LATENCY, INFERENCE_LATENCY
+from orchestration.pipeline_orchestrator import PipelineOrchestrator
+from config import config
 
 class TestRedisManager:
     """Test Redis manager functionality"""
