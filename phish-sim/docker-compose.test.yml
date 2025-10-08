@@ -1,0 +1,36 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2024 Phish-Sim Project
+
+version: '3.8'
+
+services:
+  backend-test:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    command: pytest
+    environment:
+      - ENVIRONMENT=test
+      - LOG_LEVEL=debug
+    volumes:
+      - ./backend:/app
+      - ./tests:/tests
+    networks:
+      - phish-sim-test-network
+
+  frontend-test:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    command: npm test
+    environment:
+      - NODE_ENV=test
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    networks:
+      - phish-sim-test-network
+
+networks:
+  phish-sim-test-network:
+    driver: bridge
