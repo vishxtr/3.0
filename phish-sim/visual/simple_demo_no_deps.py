@@ -3,17 +3,16 @@
 
 """
 Simple demo script for T004 - Visual/DOM structural analyzer
-Demonstrates the visual analysis pipeline without heavy dependencies
+Demonstrates the visual analysis pipeline without any external dependencies
 """
 
 import json
 import os
 import random
 import time
-import numpy as np
 from pathlib import Path
 
-# Mock classes to simulate the visual analysis components without heavy dependencies
+# Mock classes to simulate the visual analysis components without any dependencies
 
 class MockScreenshotCapture:
     def __init__(self):
@@ -33,9 +32,9 @@ class MockScreenshotCapture:
             "viewport_size": {"width": self.viewport_width, "height": self.viewport_height},
             "content_size": {"width": 1920, "height": 3000},
             "load_metrics": {
-                "loadTime": random.uniform(1.0, 3.0),
-                "domContentLoaded": random.uniform(0.5, 1.5),
-                "firstPaint": random.uniform(0.8, 2.0)
+                "loadTime": round(random.uniform(1.0, 3.0), 2),
+                "domContentLoaded": round(random.uniform(0.5, 1.5), 2),
+                "firstPaint": round(random.uniform(0.8, 2.0), 2)
             }
         }
         
@@ -85,16 +84,16 @@ class MockScreenshotCapture:
                 "mean_rgb": [random.randint(100, 200), random.randint(100, 200), random.randint(100, 200)],
                 "std_rgb": [random.randint(20, 80), random.randint(20, 80), random.randint(20, 80)],
                 "unique_colors": random.randint(1000, 10000),
-                "brightness": random.uniform(0.3, 0.8)
+                "brightness": round(random.uniform(0.3, 0.8), 3)
             },
             "texture_analysis": {
-                "variance": random.uniform(100, 1000),
-                "std": random.uniform(10, 100),
-                "edge_density": random.uniform(0.1, 0.5)
+                "variance": round(random.uniform(100, 1000), 1),
+                "std": round(random.uniform(10, 100), 1),
+                "edge_density": round(random.uniform(0.1, 0.5), 3)
             },
             "edge_analysis": {
-                "strength": random.uniform(50, 200),
-                "density": random.uniform(0.2, 0.8)
+                "strength": round(random.uniform(50, 200), 1),
+                "density": round(random.uniform(0.2, 0.8), 3)
             }
         }
 
@@ -131,7 +130,7 @@ class MockDOMAnalyzer:
                         {"type": "text", "name": "username"},
                         {"type": "password", "name": "password"}
                     ],
-                    "suspicious_score": random.uniform(0.2, 0.8) if is_phishing else random.uniform(0.0, 0.3)
+                    "suspicious_score": round(random.uniform(0.2, 0.8), 3) if is_phishing else round(random.uniform(0.0, 0.3), 3)
                 }
             ],
             "suspicious_indicators": ["High suspicious score"] if is_phishing else []
@@ -170,7 +169,7 @@ class MockDOMAnalyzer:
         }
         
         # Calculate risk score
-        risk_score = random.uniform(0.7, 0.9) if is_phishing else random.uniform(0.1, 0.4)
+        risk_score = round(random.uniform(0.7, 0.9), 3) if is_phishing else round(random.uniform(0.1, 0.4), 3)
         
         return {
             "url": url,
@@ -195,11 +194,11 @@ class MockVisualClassifier:
         
         if is_phishing:
             prediction = "phish"
-            confidence = random.uniform(0.7, 0.95)
+            confidence = round(random.uniform(0.7, 0.95), 3)
             probabilities = {"phish": confidence, "benign": 0.1, "suspicious": 0.05}
         else:
             prediction = "benign"
-            confidence = random.uniform(0.8, 0.98)
+            confidence = round(random.uniform(0.8, 0.98), 3)
             probabilities = {"phish": 0.05, "benign": confidence, "suspicious": 0.1}
         
         return {
@@ -207,7 +206,7 @@ class MockVisualClassifier:
             "prediction": prediction,
             "confidence": confidence,
             "probabilities": probabilities,
-            "processing_time_ms": random.uniform(10, 50),
+            "processing_time_ms": round(random.uniform(10, 50), 1),
             "model_info": {
                 "architecture": "SimpleCNN",
                 "input_size": (224, 224, 3),
@@ -253,8 +252,8 @@ class MockFeatureExtractor:
             "color_features": {
                 "mean_rgb": [random.randint(100, 200), random.randint(100, 200), random.randint(100, 200)],
                 "std_rgb": [random.randint(20, 80), random.randint(20, 80), random.randint(20, 80)],
-                "brightness": random.uniform(0.3, 0.8),
-                "contrast": random.uniform(0.1, 0.5),
+                "brightness": round(random.uniform(0.3, 0.8), 3),
+                "contrast": round(random.uniform(0.1, 0.5), 3),
                 "dominant_colors": [
                     {"color": [255, 0, 0], "percentage": 0.3},
                     {"color": [0, 255, 0], "percentage": 0.2},
@@ -262,37 +261,37 @@ class MockFeatureExtractor:
                 ]
             },
             "texture_features": {
-                "lbp_histogram": [random.random() for _ in range(10)],
-                "gabor_features": [random.random() for _ in range(8)],
-                "glcm_contrast": random.uniform(0.1, 0.5),
-                "glcm_homogeneity": random.uniform(0.3, 0.8),
-                "texture_variance": random.uniform(100, 1000)
+                "lbp_histogram": [round(random.random(), 3) for _ in range(10)],
+                "gabor_features": [round(random.random(), 3) for _ in range(8)],
+                "glcm_contrast": round(random.uniform(0.1, 0.5), 3),
+                "glcm_homogeneity": round(random.uniform(0.3, 0.8), 3),
+                "texture_variance": round(random.uniform(100, 1000), 1)
             },
             "shape_features": {
                 "num_contours": random.randint(5, 50),
                 "total_edge_pixels": random.randint(1000, 10000),
-                "edge_density": random.uniform(0.1, 0.5),
-                "circularity": random.uniform(0.1, 0.9)
+                "edge_density": round(random.uniform(0.1, 0.5), 3),
+                "circularity": round(random.uniform(0.1, 0.9), 3)
             },
             "edge_features": {
-                "sobel_magnitude_mean": random.uniform(0.1, 0.5),
-                "laplacian_mean": random.uniform(0.0, 0.2),
-                "canny_edge_density": random.uniform(0.1, 0.4),
-                "edge_orientation_histogram": [random.random() for _ in range(8)]
+                "sobel_magnitude_mean": round(random.uniform(0.1, 0.5), 3),
+                "laplacian_mean": round(random.uniform(0.0, 0.2), 3),
+                "canny_edge_density": round(random.uniform(0.1, 0.4), 3),
+                "edge_orientation_histogram": [round(random.random(), 3) for _ in range(8)]
             },
             "histogram_features": {
-                "histogram_r": [random.random() for _ in range(64)],
-                "histogram_g": [random.random() for _ in range(64)],
-                "histogram_b": [random.random() for _ in range(64)],
-                "histogram_entropy": {"r": random.uniform(2, 8), "g": random.uniform(2, 8), "b": random.uniform(2, 8)}
+                "histogram_r": [round(random.random(), 3) for _ in range(64)],
+                "histogram_g": [round(random.random(), 3) for _ in range(64)],
+                "histogram_b": [round(random.random(), 3) for _ in range(64)],
+                "histogram_entropy": {"r": round(random.uniform(2, 8), 3), "g": round(random.uniform(2, 8), 3), "b": round(random.uniform(2, 8), 3)}
             },
             "cnn_features": {
-                "cnn_features": [random.random() for _ in range(512)],
+                "cnn_features": [round(random.random(), 3) for _ in range(512)],
                 "feature_dimension": 512,
                 "layer": "fc1",
                 "model_type": "simulated_cnn"
             },
-            "extraction_time_ms": random.uniform(50, 200),
+            "extraction_time_ms": round(random.uniform(50, 200), 1),
             "timestamp": time.time()
         }
 
@@ -312,7 +311,7 @@ class MockTemplateMatcher:
         best_match = None
         
         for template_name, template_path in self.template_cache.items():
-            similarity_score = random.uniform(0.1, 0.95)
+            similarity_score = round(random.uniform(0.1, 0.95), 3)
             is_match = similarity_score >= self.similarity_threshold
             
             match_info = {
@@ -338,7 +337,7 @@ class MockTemplateMatcher:
             "best_match": best_match,
             "best_score": best_score,
             "matches_above_threshold": len([m for m in matches if m["is_match"]]),
-            "processing_time_ms": random.uniform(20, 100),
+            "processing_time_ms": round(random.uniform(20, 100), 1),
             "timestamp": time.time()
         }
     
@@ -348,14 +347,14 @@ class MockTemplateMatcher:
             "image1_path": image1_path,
             "image2_path": image2_path,
             "similarity_metrics": {
-                "ssim": random.uniform(0.3, 0.9),
-                "histogram_similarity": random.uniform(0.2, 0.8),
-                "feature_similarity": random.uniform(0.1, 0.7),
-                "color_similarity": random.uniform(0.4, 0.9),
-                "texture_similarity": random.uniform(0.2, 0.8)
+                "ssim": round(random.uniform(0.3, 0.9), 3),
+                "histogram_similarity": round(random.uniform(0.2, 0.8), 3),
+                "feature_similarity": round(random.uniform(0.1, 0.7), 3),
+                "color_similarity": round(random.uniform(0.4, 0.9), 3),
+                "texture_similarity": round(random.uniform(0.2, 0.8), 3)
             },
-            "overall_similarity": random.uniform(0.3, 0.8),
-            "processing_time_ms": random.uniform(30, 150),
+            "overall_similarity": round(random.uniform(0.3, 0.8), 3),
+            "processing_time_ms": round(random.uniform(30, 150), 1),
             "timestamp": time.time()
         }
     
@@ -686,16 +685,3 @@ print("\nNext Steps:")
 for item in summary_data["next_steps"]:
     print(f"  - {item}")
 print("\n✅ T004 Demo completed successfully!")
-
-# Fix the async issue by making the demo synchronous
-import asyncio
-
-async def run_demo():
-    # Run the demo code here
-    pass
-
-# Run the demo
-if __name__ == "__main__":
-    # Since we can't use async in this context, let's run the demo synchronously
-    print("Running T004 Demo...")
-    # The demo code above is already synchronous, so it will run fine
